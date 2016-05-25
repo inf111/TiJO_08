@@ -1,6 +1,5 @@
 /*global element,by*/
-var byString = function (object, fragmentName)
-{
+var byString = function (object, fragmentName) {
     'use strict';
     if (!fragmentName || !fragmentName.replace) {
         return null;
@@ -21,23 +20,16 @@ var byString = function (object, fragmentName)
     }
     return object;
 };
-
-var fragments = function (text)
-{
+var fragments = function (text) {
     'use strict';
-
     var mapping = {
-        button: element,
-        type: element,
-        fifa: element,
-        rank: element,
-        team: element,
-        totalPoints: element
-
-
+        button: element.bind(null, by.css('.btn')),
+        type: element.bind(null, by.binding('fifa.type')),
+        fifa: element.bind(null, by.css('.table')),
+        rank: element.bind(null, by.css('td:nth-of-type(1)')),
+        team: element.bind(null, by.css('td:nth-of-type(2)')),
+        totalPoints: element.bind(null, by.css('td:nth-of-type(3)'))
     };
-
     return byString(mapping, text);
 };
-
 module.exports = fragments;
